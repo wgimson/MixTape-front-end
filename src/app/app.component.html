@@ -131,9 +131,21 @@
     </div>
   </p-tabPanel>
   <p-tabPanel header="Vinyl" [selected]="true">
-      Content 2
+
+    <div class="song">
+      <button data-id_track="1" class="play play-1">Play</button>
+      <audio onended="stopTrack(1)" class="track-1" src="http://kiki.tout.mou.free.fr/zic/14-ian_pooley-chord_memory_(daft_punk_remix).mp3"
+        controls preload="auto" autobuffer></audio>
+    </div>
+
+    <div class="vinyl vinyl-1 paused">
+      <div class="grooves"></div>
+      <div class="light"></div>
+      <div class="light-alt"></div>
+      <div class="macaron">
+        <img class="cover" src="http://trunkfunk.com/yaki-da/wp-content/uploads/Ian-Pooley-Chord-Memory-Remixes-Force-Inc.-Music-Works.jpg"
+          alt="">
+      </div>
+    </div>
   </p-tabPanel>
 </p-tabView>
-
-
-
