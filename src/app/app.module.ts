@@ -1,10 +1,13 @@
-import { BrowserModule } from '@angular/platform-browser';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
 
 import {TabViewModule} from 'primeng/tabview';
 
 import { AppComponent } from './app.component';
 
+import { MixTapeService } from './services/mixtape.service';
 
 @NgModule({
   declarations: [
@@ -12,9 +15,13 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
+    FormsModule,
     TabViewModule
   ],
-  providers: [],
+  providers: [
+    MixTapeService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

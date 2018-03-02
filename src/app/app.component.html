@@ -141,4 +141,146 @@
       </div>
     </div>
   </p-tabPanel>
+  <p-tabPanel header="MixTapes">
+    <div class="row">
+      <div class="col-md-2"></div>
+      <div class="col-md-8">
+
+        <div class="todos" *ngIf="mixTapesList">
+          <table class="table">
+            <thead class="h">
+              <tr class="h">
+                <th class="h">Title</th>
+                <th class="h">Description</th>
+                <th class="h">Date</th>
+                <th class="h">Status</th>
+                <th class="h">Options</th>
+              </tr>
+            </thead>
+            <tbody>
+
+              <tr class="todo" (dblclick)="editMixTape(mixtape)" *ngFor="let mixtape of mixTapesList">
+
+                <td>{{mixtape.title}}</td>
+                <td>{{mixtape.description}}</td>
+                <td>{{mixtape.date | date}}</td>
+                <td>{{mixtape.status}}</td>
+
+                <td>
+                  <!-- <button class="btn btn-success" (click)="doneMixTape(mixtape)">
+                    <i class="fa fa-check"></i>
+                  </button> -->
+                  <button class="btn btn-primary" (click)="editMixTape(mixtape)">
+                    <i class="fa fa-pencil"></i>
+                  </button>
+                  <button class="btn btn-danger" (click)="deleteMixTape(mixtape)">
+                    <i class="fa fa-trash"></i>
+                  </button>
+                </td>
+
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+
+        <form>
+          <div class="form-row">
+
+            <div class="col-md-5">
+              <input type="text" name="title" id="title" [(ngModel)]="newMixTape.title" placeholder="Title" class="form-control">
+            </div>
+            <div class="col-md-5">
+              <input name="description" id="description" [(ngModel)]="newMixTape.description" placeholder="Description" class="form-control"
+                id="description">
+            </div>
+            <div class="col-md-2">
+              <button type="submit" class="btn btn-primary" (click)="create()">Add</button>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="col-md-2">
+
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-2"></div>
+      <div class="col-md-8">
+
+        <div class="todos" *ngIf="mixTapesList">
+          <table class="table">
+            <thead class="h">
+              <tr class="h">
+                <th class="h">Title</th>
+                <th class="h">Description</th>
+                <th class="h">Date</th>
+                <th class="h">Status</th>
+                <th class="h">Options</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="todo" (dblclick)="editMixTape(mixtape)" *ngFor="let mixtape of mixTapesList">
+
+                <ng-container *ngIf="!editTodos.includes(todo); else editTD">
+                  <td>{{mixtape.title}}</td>
+                  <td>{{mixtape.description}}</td>
+                  <td>{{mixtape.date | date}}</td>
+                  <td>{{mixtape.status}}</td>
+                </ng-container>
+
+                <ng-template #editTD>
+                  <td>
+                    <input type="text" name="title" id="title" (keypress)="submitMixTape($event, mixtape)" [(ngModel)]="mixtape.title"
+                      placeholder="Title" class="form-control">
+                  </td>
+                  <td>
+                    <input type="text" name="description" id="description" (keypress)="submitMixTape($event, mixtape)" [(ngModel)]="mixtape.description"
+                      placeholder="Description" class="form-control">
+                  </td>
+                  <td>{{mixtape.date | date}}</td>
+                  <td>
+                    <input type="text" name="status" id="status" (keypress)="submitMixTape($event, mixtape)" [(ngModel)]="mixtape.status" placeholder="Status"
+                      class="form-control">
+                  </td>
+                </ng-template>
+
+                <td class="o">
+                  <!-- <button class="btn btn-success" (click)="doneMixTape(mixTape)">
+                    <i class="fa fa-check"></i>
+                  </button> -->
+                  <button class="btn btn-primary" (click)="editMixTape(mixtape)">
+                    <i class="fa fa-pencil"></i>
+                  </button>
+                  <button class="btn btn-danger" (click)="deleteMixTape(mixtape)">
+                    <i class="fa fa-trash"></i>
+                  </button>
+                </td>
+
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+
+        <form>
+          <div class="form-row">
+
+            <div class="col-md-5">
+              <input type="text" name="title" id="title" [(ngModel)]="newMixTape.title" placeholder="Title" class="form-control">
+            </div>
+            <div class="col-md-5">
+              <input name="description" id="description" [(ngModel)]="newMixTape.description" placeholder="Description" class="form-control"
+                id="description">
+            </div>
+            <div class="col-md-2">
+              <button type="submit" class="btn btn-primary" (click)="create()">Add</button>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="col-md-2">
+      </div>
+    </div>
+  </p-tabPanel>
 </p-tabView>
